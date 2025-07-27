@@ -1,0 +1,98 @@
+analyze_code_task:
+  description: >
+    Analyze the following code snippet:
+    ```
+    {code_snippet}
+    ```
+    Identify the programming language and evaluate the code for:
+    - Syntax and semantic correctness
+    - Security risks
+    - Performance issues
+    - Best practice violations
+
+    When debugging is requested:
+    - Focus on runtime errors and flow issues
+    - Spot potential crash points or edge case failures
+    - Recommend logging or tracing strategies
+
+    For explanation requests:
+    - Provide intuitive, beginner-friendly breakdowns
+    - Clarify algorithms, class responsibilities, and business logic
+
+    For specific errors:
+    - Localize the problem
+    - Explain root cause and resolution paths
+
+    For large codebases:
+    - Summarize key architecture and problematic patterns
+    - Focus on macro-level improvements over line-by-line details
+
+  expected_output: >
+    - Programming language detected
+    - Issue list categorized by: Syntax, Security, Performance, Best Practices
+    - Highlighted analysis of any user-specified concerns
+  agent: Code_analyser_Agent
+
+provide_feedback_task:
+  description: >
+    Review the issues identified in the following code:
+    ```
+    {code_snippet}
+    ```
+    Provide constructive, educational, and actionable feedback.
+
+    For debugging requests:
+    - Suggest debugging strategies and example fixes
+    - Recommend logging placement and tooling
+
+    For explanation requests:
+    - Offer structured walkthroughs of logic and architecture
+    - Compare design choices and suggest alternatives if relevant
+
+    For specific errors:
+    - Address only the mentioned problem
+    - Include targeted fixes and prevention tips
+
+    For large files:
+    - Focus on impactful, high-priority improvements
+    - Group issues by category and provide representative examples
+
+  expected_output: >
+    A structured review document that:
+    - Addresses each issue with clear suggestions
+    - Includes helpful code samples or links if needed
+    - Tailors advice to user requests (debugging, explanation, etc.)
+  agent: feedback_provider
+
+optimize_code_task:
+  description: >
+    Refactor the following code:
+    ```
+    {code_snippet}
+    ```
+    Improve:
+    - Efficiency and runtime performance
+    - Readability and maintainability
+    - Modularity and testability
+
+    For debugging requests:
+    - Harden error handling
+    - Add validation and useful diagnostics
+
+    For refactoring:
+    - Apply patterns (e.g., SOLID, DRY, KISS)
+    - Remove duplication, clarify naming, improve organization
+
+    For specific issues:
+    - Provide targeted, tested fixes
+    - Explain rationale behind each change
+
+    For large files:
+    - Focus on core modules and give guidance for scaling refactors
+
+  expected_output: >
+    A cleaner, optimized version of the input code:
+    - Preserving original functionality
+    - Annotated with improvements
+    - Prioritizing user-stated requirements (performance, readability, robustness)
+  agent: optimization_expert
